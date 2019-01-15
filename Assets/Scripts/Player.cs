@@ -54,11 +54,11 @@ public class Player : MonoBehaviour
         //Flip sprite!
         if (velocity.x < 0)
         {
-            playerSprite.flipX = true;
+            playerSprite.flipX = false;
         }
         else
         {
-            playerSprite.flipX = false;
+            playerSprite.flipX = true;
         }
 
         //Jumping
