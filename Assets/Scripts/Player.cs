@@ -19,6 +19,10 @@ public class Player : MonoBehaviour
     public SpriteRenderer playerSprite;
     public Collider2D playerCollider;
 
+    public AudioSource Death;
+    public AudioSource Coin;
+
+
     //variable to ref lives on display
     public Lives livesObject;
 
@@ -83,12 +87,28 @@ public class Player : MonoBehaviour
         }
     }
 
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.GetComponent<Coin>())
+
+        {
+
+            Coin.Play();
+
+        }
+    }
+    
+
+
     //our own function for handling player death
     public void Kill()
     {
         //take away life and save that change
         livesObject.Loselife();
         livesObject.SaveLives();
+
+        Death.Play();
 
         //check if its game over
         bool gameOver = livesObject.IsGameOver();
